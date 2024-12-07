@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment analysis AMAZON review</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">WinPro</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#Home"> Home </a></li>
+          <li><a href="#About"> About </a></li>
+          <li><a href="#Form"> Form </a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="Home">
+      <div class="Home-container">
+        <div class="column-left">
+          <h1>Unlocking E-Commerce Success</h1>
+          <p>
+            Sick of the risks and time wasted on manual product selection? Our website is the solution. 
+            Click "Get Started" to make smarter decisions for your online business!
+          </p>
+          <a href="#Form"><button>Get Started ➜</button></a>
+        </div>
+        <div class="column-right">
+          <img
+            src="{{ url_for('static', filename='Landing.png') }}"
+            alt="illustration"
+            class="Home-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="About">
+      <div class="About-container">
+        <div class="column-left-about">
+          <h1>How WinPro Works ?</h1>
+          <p>
+            Paste your chosen product's Amazon URL, 
+            and our advanced machine learning, coupled with real-time sentiment analysis,
+            swiftly evaluates customer reviews.
+          </p>
+        </div>
+        <div class="column-right-about">
+          <img
+            src="{{ url_for('static', filename='amazon_reviews.png') }}"
+            alt="illustration"
+            class="about-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="Form">
+      <div class="Form-container">
+        <div class="column-left-Form">
+          <h1>Please input the URL of your Amazon product below</h1>
+          <form
+            action="{{ url_for('predict')}}"
+            method="post"
+            enctype="application/json"
+          >
+            <input
+              type="text"
+              name="Review"
+              placeholder="Review"
+              required="required"
+            />
+            <button type="submit" class="submit_btn">Predict</button>
+          </form>
+          <div class="prediction">
+            <span class ="predict_proba">{{ prediction_text }}</span>
+            <span class ="result ">{{winning}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
