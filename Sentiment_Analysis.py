@@ -23,11 +23,9 @@ lemmatizer = WordNetLemmatizer()
 def Home():
     return render_template("index.html")
 
-
 @app.route('/predict', methods=["POST"])
 def predict():
     url = request.form['Review']
-    
     if os.path.exists(CSV_FILE_PATH):
         os.remove(CSV_FILE_PATH)
 
@@ -78,8 +76,6 @@ def predict():
 def scrape_amazon_reviews(url):
 
     review_list = []
-    
-
     def get_soup(url):
         splash_url = 'http://localhost:8050/render.html'
         params = {'url': url, 'wait': 2}
