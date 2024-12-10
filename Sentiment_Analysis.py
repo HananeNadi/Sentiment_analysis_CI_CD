@@ -10,8 +10,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-app=Flask(__name__) #instance of Flask
-
+app=Flask(__name__) 
 model = joblib.load(open('./SVM_reviews.joblib','rb'))
 tfidvectorizer = joblib.load('./tfidfvectorizer_reviews.joblib')
 Stopwords_modified=set(stopwords.words('english')) - {'no', 'not','will', 'nor', 'but', 'however', 'although', 'yet', 'unfortunately', 'never', 'none', 'nobody', 'nowhere', 'nothing', 'neither', 'no one', 'without'}
